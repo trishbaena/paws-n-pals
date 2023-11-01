@@ -5,16 +5,16 @@ class OutfitsController < ApplicationController
 
   def show
     @outfit = Outfit.find(params[:id])
+    @requests = @outfit.requests
   end
 
   def new
     @outfit = Outfit.new
-    @user = User.find(params[:user_id])
   end
 
   def create
     @outfit = Outfit.new(outfit_params)
-    @outfit.user = @user
+    @outfit.user = current_user
     if @outfit.save
       redirect_to outfit_path(@outfit)
     else

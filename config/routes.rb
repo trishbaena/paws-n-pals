@@ -4,13 +4,11 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  get '/outfits', to: 'outfits#index'
-  get '/outfits/:id', to: 'outfits#show'
+  resources :outfits, only: [ :new, :create, :show, :index ]
 
-  get '/outfits/new', to: 'outfits#new'
-  post 'outfits', to: 'outfits#create'
-
-  resources :users do
-    resources :outfits, only: [ :new, :create, :destroy ]
+  resources :outfits do
+    resources :requests, only: [ :new, :create, :edit ]
   end
+
+  resources :requests, only: [ :index ]
 end
