@@ -13,7 +13,7 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(request_params)
+    @request = Request.new
     @request.user = current_user
     @request.outfit = @outfit
 
@@ -33,7 +33,7 @@ class RequestsController < ApplicationController
     @outfit = Outfit.find(params[:outfit_id])
   end
 
-  def request_params
-    params.require(:request).permit(:status, :outfit_id, :user_id)
-  end
+  # def request_params
+  #   params.require(:request).permit(:status)
+  # end
 end
