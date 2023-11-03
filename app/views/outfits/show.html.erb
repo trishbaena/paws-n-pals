@@ -1,8 +1,7 @@
 <%# Outfit Show Page %>
 
-<h2></h2>
-<%= @requests.map(&:status) %>
-<%= @requests.map(&:created_at) %>
+<%# <%= @requests.map(&:status) %>
+<%# <%= @requests.map(&:created_at) %>
 
 <div class="h-100 d-flex align-items-center justify-content-center mt-10">
 <div class="card" style="width: 18rem;">
@@ -12,9 +11,9 @@
     <p class="card-text"><%= @outfit.description %></p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>Price</strong> $<%= @outfit.price %></li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item"><strong>Price: </strong> $<%= @outfit.price %></li>
+    <li class="list-group-item"><strong>Status: </strong></li>
+    <li class="list-group-item"><strong> Added on: </strong><%= @outfit.created_at.strftime("%Y-%m-%d") %></li>
   </ul>
   <div class="card-body">
     <a href="#" class="card-link">Go Back</a>
