@@ -1,4 +1,24 @@
-this is the outfit show page
+<%# Outfit Show Page %>
 
+<h2></h2>
 <%= @requests.map(&:status) %>
 <%= @requests.map(&:created_at) %>
+
+<div class="h-100 d-flex align-items-center justify-content-center mt-10">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="<%= @outfit.photo_url %>" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><h1><%= @outfit.name %><h1></h5>
+    <p class="card-text"><%= @outfit.description %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Price -> $<%= @outfit.price %></li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Go Back</a>
+    <a href="#" class="card-link">Make a Request</a>
+  </div>
+</div>
+</div>

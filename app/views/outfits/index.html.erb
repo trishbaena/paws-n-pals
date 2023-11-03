@@ -5,4 +5,6 @@
   <%= outfit.description %>
   <img src="<%= outfit.photo_url %>">
   <%= outfit.price %>
+  <%= link_to "Details",
+  outfit_path(outfit) %>
 <% end %>
