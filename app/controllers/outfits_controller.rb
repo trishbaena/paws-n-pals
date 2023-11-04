@@ -26,6 +26,9 @@ class OutfitsController < ApplicationController
   end
 
   def destroy
+    @outfit = Outfit.find(params[:id])
+    @outfit.destroy
+    redirect_to user_path(current_user)
   end
 
   private

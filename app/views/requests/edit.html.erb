@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-text">Request for <%= @request.outfit.name %></h5>
+    <p class="card-text">Status: <%= @request.status %></p>
+    <%= link_to 'Accept this request', outfit_request_path(request), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-success'%>
+    <%= link_to 'Reject this request', outfit_request_path(request), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'%>
+ </div>
+</div>

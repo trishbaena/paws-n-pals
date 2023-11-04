@@ -25,6 +25,13 @@ class RequestsController < ApplicationController
   end
 
   def edit
+    @request = Request.find(params[:id])
+  end
+
+  def destroy
+    @request = Request.find(params[:id])
+    @request.destroy
+    redirect_to user_path(current_user)
   end
 
   private
