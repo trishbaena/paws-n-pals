@@ -13,12 +13,11 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new
+    @request = Request.new(request_params)
     @request.user = current_user
     @request.outfit = @outfit
-
     if @request.save
-      redirect_to outfit_requests_path(@request)
+      redirect_to outfit_path(@request.outfit)
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,7 +32,7 @@ class RequestsController < ApplicationController
     @outfit = Outfit.find(params[:outfit_id])
   end
 
-  # def request_params
-  #   params.require(:request).permit(:status)
-  # end
+  def request_params
+    params.require(:request).permit(:start_date, :end_date)
+  end
 end
