@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
+  resources :users, only: [ :show ] do
+    get 'outfits', to: "users#outfits"
+    get 'requests', to: "users#requests"
+  end
+
   resources :outfits, only: [ :new, :create, :show, :index ]
 
   resources :outfits do
