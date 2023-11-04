@@ -1,1 +1,33 @@
-this is the outfit show page
+<div class="d-flex align-items-center justify-content-center">
+  <div class="container mt-5">
+    <%# TITLE %>
+    <div class="row">
+      <h1><%= @outfit.name %><h1>
+    </div>
+    <%# PHOTO %>
+    <%# <div class="row"> %>
+      <div class="img-fluid">
+        <img src="<%= @outfit.photo_url %>">
+      </div>
+    <%# </div> %>
+    <%# DESCRIPTION & PRICE %>
+    <div class="row">
+      <div class="col-6">
+        <p class="card-text"><%= @outfit.description %></p>
+      </div>
+      <div class="col-6">
+        <strong class="text-align-right">$<%= @outfit.price %></strong>
+      </div>
+    </div>
+    <%# BUTTONS %>
+    <div class="row">
+      <div class="col-6">
+        <%= link_to "Go Back", outfits_path, :class => "btn btn-primary" %>
+      </div>
+      <div class="col-6">
+        <%= link_to "Make a Request",  requests_path, :class => "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+</div>
