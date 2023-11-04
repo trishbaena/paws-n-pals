@@ -3,21 +3,40 @@
 <%# <%= @requests.map(&:status) %>
 <%# <%= @requests.map(&:created_at) %>
 
-<div class="h-100 d-flex align-items-center justify-content-center mt-10">
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="<%= @outfit.photo_url %>" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title"><h1><%= @outfit.name %><h1></h5>
-    <p class="card-text"><%= @outfit.description %></p>
+<%# <strong> Added on: </strong><%= @outfit.created_at.strftime("%Y-%m-%d") %>
+<%# spread show page across screen %>
+<%# request - path %>
+
+<div class="d-flex align-items-center justify-content-center">
+  <div class="container mt-5">
+    <%# TITLE %>
+    <div class="row">
+      <h1><%= @outfit.name %><h1>
+    </div>
+    <%# PHOTO %>
+    <%# <div class="row"> %>
+      <div class="img-fluid">
+        <img src="<%= @outfit.photo_url %>">
+      </div>
+    <%# </div> %>
+    <%# DESCRIPTION & PRICE %>
+    <div class="row">
+      <div class="col-6">
+        <p class="card-text"><%= @outfit.description %></p>
+      </div>
+      <div class="col-6">
+        <strong class="text-align-right">$<%= @outfit.price %></strong>
+      </div>
+    </div>
+    <%# BUTTONS %>
+    <div class="row">
+      <div class="col-6">
+        <%= link_to "Go Back", outfits_path, :class => "btn btn-primary" %>
+      </div>
+      <div class="col-6">
+        <%= link_to "Make a Request",  requests_path, :class => "btn btn-primary" %>
+      </div>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>Price: </strong> $<%= @outfit.price %></li>
-    <li class="list-group-item"><strong>Status: </strong></li>
-    <li class="list-group-item"><strong> Added on: </strong><%= @outfit.created_at.strftime("%Y-%m-%d") %></li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Go Back</a>
-    <a href="#" class="card-link">Make a Request</a>
-  </div>
-</div>
+
 </div>
