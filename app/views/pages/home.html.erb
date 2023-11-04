@@ -1,7 +1,15 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<%= link_to "Outfits page", outfits_path(@outfit) %>
+
 
 
 <%= button_to "logout", destroy_user_session_path, method: :delete  %>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://ichef.bbci.co.uk/news/976/cpsprodpb/D8C4/production/_109929455_puglandscape.jpg.webp);">
+  <div class="container">
+    <h1>Cute matching outfits for your and your pet</h1>
+    <p>Twinning w/ with your BFFL never felt better</p>
+    <%= link_to "Browse Outfits", outfits_path(@outfit), :class => "btn btn-light" %></a>
+  </div>
+</div>
