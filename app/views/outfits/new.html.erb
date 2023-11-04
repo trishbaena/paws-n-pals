@@ -1,3 +1,12 @@
-<h1>Create an outfit</h1>
-
-<%= render 'form' %>
+<div class="container mt-4">
+  <div class="row gy-4">
+    <div class="col-12 col-md-6 p-4">
+      <h1><%= @outfit.name %></h1>
+      <img class="rounded-4" src="https://hips.hearstapps.com/hmg-prod/images/dog-and-owner-costumes-taco-bell-fire-sauce-and-burrito-1652390014.jpg" style="width: -moz-available;">
+    </div>
+    <div class="col-12 col-md-6 p-4">
+      <h1>Create an outfit</h1>
+      <%= render 'form' %>
+      </div>
+  </div>
+</div>
