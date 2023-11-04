@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   before_action :set_outfit, only: %i[new create]
+  before_action :authenticate_user!
 
   def index
     # @requests = Request.all
