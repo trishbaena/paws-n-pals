@@ -1,25 +1,42 @@
-<h2>Sign up</h2>
+<section class="vh-84">
+  <div class="container-fluid h-custom align-center">
+    <div class="row d-flex justify-content-center align-items-center h-100">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
-  <%= f.error_notification %>
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://www.dreamar.org/wp-content/uploads/2019/10/F000000001_480px.png"
+        class="img-fluid login-img" alt="Sample image">
+      </div>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+        <h1 class="text-center">Sign up</h1>
+
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", :class => 'btn btn-primary btn-large' %>
+          </div>
+        <% end %>
+
+        Already have an account?<%= render "devise/shared/links" %>
+
+      </div>
+
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
