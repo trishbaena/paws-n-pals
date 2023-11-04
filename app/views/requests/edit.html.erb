@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-text">Request for <%= @request.outfit.name %></h5>
+    <p class="card-text">Status: <%= @request.status %></p>
+    <% if @request.status == 'Pending' %>
+     <%= link_to 'Accept', accept_request_path(@request), method: :put, class: 'btn btn-success' %>
+     <%= link_to 'Reject', reject_request_path(@request), method: :put, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+   <% end %>
+ </div>
+</div>

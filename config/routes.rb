@@ -16,5 +16,11 @@ Rails.application.routes.draw do
     resources :requests, only: [ :new, :create, :edit ]
   end
 
-  resources :requests, only: [ :index ]
+
+  resources :requests, only: [ :index ] do
+    member do
+      put :accept
+      put :reject
+    end
+  end
 end
