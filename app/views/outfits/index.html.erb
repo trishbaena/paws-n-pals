@@ -1,4 +1,6 @@
-<div class="container">
+<%= render 'navbar' %>
+
+<div class="main-container">
   <h1 class="text-center display-4 mt-4 mb-4"> Browse outfits for you and your pet!</h1>
   <div class="row">
     <% @outfits.each do |outfit| %>
@@ -15,3 +17,4 @@
     <% end %>
   </div>
 </div>
+<%= render 'footer' %>

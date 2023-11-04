@@ -1,33 +1,15 @@
-<div class="d-flex align-items-center justify-content-center">
-  <div class="container mt-5">
-    <%# TITLE %>
-    <div class="row">
-      <h1><%= @outfit.name %><h1>
+<div class="container mt-4">
+  <div class="row gy-4">
+    <div class="col-12 col-md-6 p-4">
+      <h1><%= @outfit.name %></h1>
+      <img class="rounded-4" src="<%= @outfit.photo_url %>" style="width: -moz-available;">
     </div>
-    <%# PHOTO %>
-    <%# <div class="row"> %>
-      <div class="img-fluid">
-        <img src="<%= @outfit.photo_url %>">
-      </div>
-    <%# </div> %>
-    <%# DESCRIPTION & PRICE %>
-    <div class="row">
-      <div class="col-6">
-        <p class="card-text"><%= @outfit.description %></p>
-      </div>
-      <div class="col-6">
-        <strong class="text-align-right">$<%= @outfit.price %></strong>
-      </div>
-    </div>
-    <%# BUTTONS %>
-    <div class="row">
-      <div class="col-6">
-        <%= link_to "Go Back", outfits_path, :class => "btn btn-primary" %>
-      </div>
-      <div class="col-6">
-        <%= link_to "Make a Request",  requests_path, :class => "btn btn-primary" %>
-      </div>
+    <div class="col-12 col-md-6 p-4">
+      <h1>Outfit details</h1>
+      <p class="card-text"><strong>Description: </strong><%= @outfit.description %></p>
+      <p class="card-text"><strong>Price: </strong>$<%= @outfit.price %></p>
+      <%= link_to "Request this outfit!",  new_outfit_request_path(@outfit), :class => "btn btn-primary" %>
+      <%= link_to "Go Back to Browse", outfits_path, :class => "btn btn-secondary" %>
     </div>
   </div>
-
 </div>

@@ -1,4 +1,7 @@
 class OutfitsController < ApplicationController
+  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @outfits = Outfit.all
   end
@@ -23,6 +26,9 @@ class OutfitsController < ApplicationController
   end
 
   def destroy
+    @outfit = Outfit.find(params[:id])
+    @outfit.destroy
+    redirect_to user_path(current_user)
   end
 
   private

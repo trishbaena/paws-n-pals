@@ -10,10 +10,10 @@ Rails.application.routes.draw do
     get 'requests', to: "users#requests"
   end
 
-  resources :outfits, only: [ :new, :create, :show, :index ]
+  resources :outfits, only: [ :new, :create, :show, :index, :destroy ]
 
   resources :outfits do
-    resources :requests, only: [ :new, :create, :edit ]
+    resources :requests, only: [ :new, :create, :edit, :destroy ]
   end
 
   resources :requests, only: [ :index ]

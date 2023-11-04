@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   before_action :set_outfit, only: %i[new create]
+  before_action :authenticate_user!
 
   def index
     # @requests = Request.all
@@ -24,6 +25,13 @@ class RequestsController < ApplicationController
   end
 
   def edit
+    @request = Request.find(params[:id])
+  end
+
+  def destroy
+    @request = Request.find(params[:id])
+    @request.destroy
+    redirect_to user_path(current_user)
   end
 
   private
