@@ -3,9 +3,6 @@ class RequestsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # @requests = Request.all
-    # @requests_by_user
-    # @requests = Request.find(params[:current_user])
     @requests = current_user.requests
   end
 
