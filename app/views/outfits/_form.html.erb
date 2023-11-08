@@ -3,5 +3,11 @@
   <%= f.input :description %>
   <%= f.input :photo_url %>
   <%= f.input :price %>
+
+  <div class="field">
+    <%= f.label :category_id %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
   <%= f.submit "Create outfit" %>
 <% end %>

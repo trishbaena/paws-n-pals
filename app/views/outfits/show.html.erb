@@ -8,8 +8,11 @@
       <h1>Outfit details</h1>
       <p class="card-text"><strong>Description: </strong><%= @outfit.description %></p>
       <p class="card-text"><strong>Price: </strong>$<%= @outfit.price %></p>
-      <%= link_to "Request this outfit!",  new_outfit_request_path(@outfit), :class => "btn btn-primary" %>
-      <%= link_to "Go Back to Browse", outfits_path, :class => "btn btn-secondary" %>
+      <p class="card-text"><strong>Category: </strong> <%= @outfit.category.name %></p>
+      <div>
+        <%= link_to "Request this outfit!",  new_outfit_request_path(@outfit), :class => "btn btn-primary" %>
+        <%= link_to "Go Back to Browse", outfits_path, :class => "btn btn-secondary" %>
+      </div>
     </div>
   </div>
 </div>

@@ -10,6 +10,8 @@
          <div class="card-body">
          <h5 class="card-title"><%= outfit.name %></h5>
          <p class="card-text"><strong>Price:</strong><span class="ms-1"><%= outfit.price %></span></p>
+         <p class="card-text"><strong>Category:</strong><span class="ms-1"><%= outfit.category.name %></span></p>
+
          <%= link_to 'More info', outfit_path(outfit) %>
          </div>
         </div>

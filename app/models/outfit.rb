@@ -1,5 +1,6 @@
 class Outfit < ApplicationRecord
   belongs_to :user
+  belongs_to :category
   has_many :requests, dependent: :destroy
 
   validates :photo_url, presence: true
