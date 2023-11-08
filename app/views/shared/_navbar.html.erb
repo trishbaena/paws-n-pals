@@ -1,9 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <i class="fa-solid fa-paw"></i>
+      <i class="fa-solid fa-paw"> Paws 'N Pals</i>
     <% end %>
-  <div><%= link_to "Pets 'N Paws", root_path, class: "navbar-brand" %></div>
 
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav me-auto">
@@ -24,10 +23,7 @@
       <ul class="navbar-nav me-auto">
       <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Your Outfits", outfits_path(current_user), class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Your Requests", outfits_path(current_user), class: "nav-link" %>
+            <%= link_to "Lease an outfit!", new_outfit_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

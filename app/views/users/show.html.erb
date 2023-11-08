@@ -1,68 +1,81 @@
-<%= render 'navbar' %>
+<div class="container">
 
-<div class="main-container">
-
-  <div class="container text-center my-4">
-    <h1 class="font-weight-bold"><%= @user.email %>'s Profile</h1>
+  <div class="row justify-content-center">
+    <h1 class="text-center"><%= @user.email %>'s Profile</h1>
   </div>
 
-  <div class="container my-4">
+  <div class="row mt-4">
+
+    <% if user_signed_in? && current_user.id == @user.id %>
+      <h2>Your Outfits</h2>
+    <% else %>
+      <h2><%= @user.email %>'s outfits for rent</h2>
+    <% end %>
+
+    <!-- Cards -->
     <div class="row">
-      <h2>Outfits</h2>
-      <div class="d-flex flex-row flex-wrap overflow-auto">
-        <% @outfits.each do |outfit| %>
-          <div class="card mx-2" style="width: 200px;">
-            <img src="<%= outfit.photo_url %>" class="card-img-top" style="height: 200px; object-fit: cover;" alt="<%= outfit.name %>">
+      <% @outfits.each do |outfit| %>
+        <div class="col-6 col-lg-4">
+          <div class="card">
+            <img src="<%= outfit.photo_url %>" class="card-img-top" style="height: 300px; object-fit: cover; object-position: center top;" alt="<%= outfit.name %>">
             <div class="card-body">
-              <h5 class="card-title"><%= outfit.name %></h5>
+              <h5 class="card-title"><strong><%= outfit.name %></strong></h5>
               <p class="card-text">Price: <%= outfit.price %></p>
+              <!--Edit/Destroy/Show logic-->
+              <div class="card-buttons" style="display: flex;">
                 <% if user_signed_in? && current_user.id == @user.id %>
-                  <%= link_to 'View', outfit_path(outfit), class: 'btn btn-primary' %>
-                  <%= link_to 'Edit', edit_outfit_path(outfit), class: 'btn btn-secondary' %>
-                  <%= link_to 'Delete', outfit_path(outfit), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'%>
+                  <%= link_to 'View', outfit_path(outfit)%>
+                  <%= link_to 'Edit', edit_outfit_path(outfit)%>
+                  <%= link_to 'Delete', outfit_path(outfit), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
                 <% else %>
-                  <%= link_to 'View', outfit_path(outfit), class: 'btn btn-primary d-block' %>
-              <% end %>
+                  <%= link_to 'More info', outfit_path(outfit) %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if user_signed_in? && current_user == @user %>
+
+    <!--Made-->
+    <div class="row mt-4">
+      <h2>Requests You've Made</h2>
+      <div class="row">
+        <% @requests_made.each do |request| %>
+          <div class="col-6 col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= request.outfit.name %></h5>
+                <p class="card-text"><%= request.status %></p>
+                <%= link_to 'Delete request', outfit_request_path(request.outfit, request), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this request?"}%>
+              </div>
             </div>
           </div>
         <% end %>
       </div>
     </div>
-  </div>
 
-  <% if user_signed_in? && current_user == @user %>
-    <div class="container my-4">
+    <!--Received-->
+    <div class="row mt-4">
+      <h2>Received Requests</h2>
       <div class="row">
-        <h2>Your requests</h2>
-        <div class="d-flex flex-row flex-nowrap overflow-auto">
-          <% @requests_made.each do |request| %>
-            <div class="card mx-2" style="width: 200px;">
+        <% @requests_received.each do |request| %>
+          <div class="col-6 col-md-4">
+            <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><%= request.outfit.name %></h5>
                 <p class="card-text"><%= request.status %></p>
+                <%= link_to 'Edit Request', edit_outfit_request_path(request.outfit, request) %>
               </div>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
 
-    <div class="container my-4">
-      <div class="row">
-        <h2>Received requests</h2>
-        <div class="d-flex flex-row flex-nowrap overflow-auto">
-          <% @requests_received.each do |request| %>
-            <div class="card mx-2" style="width: 200px;">
-              <div class="card-body">
-                <h5 class="card-title"><%= request.outfit.name %></h5>
-                <p class="card-text"><%= request.status %></p>
-                <%= link_to 'Edit Request', edit_outfit_request_path(request.outfit, request), class: 'btn btn-secondary' %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
   <% end %>
+
 </div>
-<%= render 'footer' %>
