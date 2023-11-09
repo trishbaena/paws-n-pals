@@ -2,7 +2,7 @@
   <div class="row gy-4">
     <div class="col-12 col-md-6 p-4">
       <h1><%= @outfit.name %></h1>
-      <img class="rounded-4" src="<%= @outfit.photo_url %>" style="width: -moz-available;">
+      <img class="rounded-4" src="<%= cl_image_tag @outfit.photo.key %>" style="width: -moz-available;">
     </div>
     <div class="col-12 col-md-6 p-4">
       <h1>Outfit details</h1>

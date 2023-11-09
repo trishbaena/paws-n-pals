@@ -6,7 +6,7 @@
     <% @outfits.each do |outfit| %>
       <div class="col-6 col-lg-4">
         <div class="card">
-         <img class="card-img-top" src="<%= outfit.photo_url %>" style="object-fit: cover; height: 300px; object-position: center top;">
+         <img class="card-img-top" src="<%= outfit.photo.key %>" style="object-fit: cover; height: 300px; object-position: center top;">
          <div class="card-body">
          <h5 class="card-title"><%= outfit.name %></h5>
          <p class="card-text"><strong>Price:</strong><span class="ms-1"><%= outfit.price %></span></p>
