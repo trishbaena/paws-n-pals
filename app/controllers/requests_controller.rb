@@ -23,6 +23,14 @@ class RequestsController < ApplicationController
 
   def edit
     @request = Request.find(params[:id])
+    @request.outfit = Outfit.find(params[:outfit_id])
+  end
+
+  def update
+    @request = Request.find(params[:id])
+    @request.update(request_params)
+    @request.save!
+    redirect_to user_path(current_user)
   end
 
   def destroy
@@ -38,6 +46,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:start_date, :end_date)
+    params.require(:request).permit(:outfit_id, :status, :start_date, :end_date)
   end
 end
