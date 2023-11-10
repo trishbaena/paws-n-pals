@@ -3,7 +3,12 @@ class OutfitsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @outfits = Outfit.all
+    if params[:category]
+      @category = Category.find_by(name: params[:category])
+      @outfits = @category ? @category.outfits : Outfit.none
+    else
+      @outfits = Outfit.all
+    end
   end
 
   def show
