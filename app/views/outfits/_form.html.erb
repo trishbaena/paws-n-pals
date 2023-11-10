@@ -1,7 +1,7 @@
 <%= simple_form_for @outfit do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :photo_url %>
+  <%= f.input :photo, as: :file %>
   <%= f.input :price %>
   <%= f.submit "Create outfit" %>
 <% end %>

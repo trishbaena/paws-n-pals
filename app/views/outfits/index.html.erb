@@ -49,12 +49,14 @@
           <% @outfits.each do |outfit| %>
             <div class="col-4">
               <div class="card">
-                <img class="card-img-top img-responsive" src="<%= outfit.photo_url %>" style="object-fit: cover; height: 200px; object-position: center top;">
-                  <div class="card-body">
-                    <h5 class="card-title"><%= outfit.name %></h5>
-                    <p class="card-text"><strong>Price:</strong><span class="ms-1">$<%= outfit.price %>/day</span></p>
-                    <%= link_to 'More info', outfit_path(outfit) %>
-                  </div>
+                <% if outfit.photo.attached? %>
+                  <%= cl_image_tag outfit.photo.key, height: 200, crop: :fill %>
+                <% end %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= outfit.name %></h5>
+                  <p class="card-text"><strong>Price:</strong><span class="ms-1">$<%= outfit.price %>/day</span></p>
+                  <%= link_to 'More info', outfit_path(outfit) %>
+                </div>
               </div>
             </div>
           <% end %>
