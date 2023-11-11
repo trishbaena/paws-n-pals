@@ -48,3 +48,22 @@ body {
 .card-buttons a:first-child {
   padding-right: 12px;
 }
+
+.outfit-show-img img {
+  width: -moz-available;
+  border-radius: 4px;
+}
+
+.outfit-index-card img {
+  width: -moz-available;
+  object-fit: cover;
+  object-position: center top;
+  height: 200px;
+}
+
+.user-show-card img {
+  width: -moz-available;
+  object-fit: cover;
+  object-position: center top;
+  height: 200px;
+}

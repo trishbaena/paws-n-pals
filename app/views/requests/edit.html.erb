@@ -8,12 +8,13 @@
 
   <div class="row justify-content-center">
     <div class="col-4 col-lg-6 p-5">
-
+      <h1><%= @request.outfit.name %></h1>
+      <div class="outfit-show-img"><%= cl_image_tag(@request.outfit.photo.key, crop: :fill) %></div>
     </div>
 
     <div class="col-4 col-lg-6 p-5">
       <p>Status: <%= @request.status %></p>
-      <p>From: <%= @request.user.email %></p>
+      <p>From: <%= @request.user.username %></p>
       <p>Start date: <%= @request.start_date %></p>
       <p>End date: <%= @request.end_date %></p>
 

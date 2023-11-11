@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="row justify-content-center">
-    <h1 class="text-center"><%= @user.email %>'s Profile</h1>
+    <h1 class="text-center"><%= @user.username %>'s Profile</h1>
   </div>
 
   <div class="row mt-4">
@@ -9,20 +9,20 @@
     <% if user_signed_in? && current_user.id == @user.id %>
       <h2>Your Outfits</h2>
     <% else %>
-      <h2><%= @user.email %>'s outfits for rent</h2>
+      <h2><%= @user.username %>'s outfits for rent</h2>
     <% end %>
 
     <!-- Cards -->
     <div class="row">
       <% @outfits.each do |outfit| %>
         <div class="col-6 col-lg-4">
-          <div class="card">
+          <div class="card user-show-card">
           <% if outfit.photo.attached? %>
-            <%= cl_image_tag outfit.photo.key, width: 400, height: 300, crop: :fill %>
+            <%= cl_image_tag outfit.photo.key, :gravity=>"auto:0", :crop=>"thumb" %>
           <% end %>
             <div class="card-body">
               <h5 class="card-title"><strong><%= outfit.name %></strong></h5>
-              <p class="card-text">Price: <%= outfit.price %></p>
+              <p class="card-text"><strong>Price: </strong>$<%= outfit.price %>/day</p>
               <!--Edit/Destroy/Show logic-->
               <div class="card-buttons" style="display: flex;">
                 <% if user_signed_in? && current_user.id == @user.id %>
@@ -50,8 +50,9 @@
           <div class="col-6 col-md-4">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title"><%= request.outfit.name %></h5>
-                <p class="card-text"><%= request.status %></p>
+                <h5 class="card-title"><%= request.outfit.name %></h5><p class="card-text">By: <%= request.outfit.user.username %></p>
+                <p class="card-text">Status: <%= request.status %></p>
+                <p class="card-text">From: <%= request.start_date %> To: <%= request.end_date %></p>
                 <%= link_to 'Delete request', outfit_request_path(request.outfit, request), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this request?"}%>
               </div>
             </div>
@@ -70,6 +71,8 @@
               <div class="card-body">
                 <h5 class="card-title"><%= request.outfit.name %></h5>
                 <p class="card-text"><%= request.status %></p>
+                <p class="card-text">From: <%= request.start_date %> To: <%= request.end_date %></p>
+                <p class="card-text">By: <%= request.user.username %></p>
                 <%= link_to 'Edit Request', edit_outfit_request_path(request.outfit, request) %>
               </div>
             </div>
