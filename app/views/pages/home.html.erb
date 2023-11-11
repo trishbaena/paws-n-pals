@@ -7,24 +7,41 @@
         <%= link_to "Browse All Outfits", outfits_path(@outfit), :class => "btn btn-light rounded-3 mt-3" %></a>
       </div>
     </div>
+
     <div class="container my-4">
       <div class="row">
-        <% Category.all.each do |category| %>
-          <% outfit = Outfit.where(category: category).first %>
-          <div class="col-md-4 mb-3">
-            <div class="card text-white text-center">
-              <% if outfit.present? %>
-                <div class="card-img-top bg-cover" style="background-image: url('<%= outfit.photo_url %>'); height: 200px; background-size: cover; background-position: center;">
-                  <%= link_to category.name, filtered_outfits_path(category: category.name), class: 'stretched-link text-decoration-none text-white', style: 'position: relative; top: 50%; transform: translateY(-50%);' %>
-                </div>
-              <% else %>
-                <div class="card-img-top bg-secondary" style="height: 200px;">
-                  <%= link_to category.name, filtered_outfits_path(category: category.name), class: 'stretched-link text-decoration-none text-white', style: 'position: relative; top: 50%; transform: translateY(-50%);' %>
-                </div>
-              <% end %>
-            </div>
+        <div class="col-md-4 mb-3">
+          <div class="card rounded-3 text-center">
+            <%= link_to filtered_outfits_path(category: 'Dog'), class: 'text-decoration-none' do %>
+              <img src="/assets/dog-bee.jpg" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Dog Category">
+              <div class="card-img-overlay d-flex align-items-center justify-content-center">
+                <h5 class="card-title text-white">Dog Outfits</h5>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <div class="card rounded-3 text-center">
+            <%= link_to filtered_outfits_path(category: 'Cat'), class: 'text-decoration-none' do %>
+              <img src="/assets/cat-bee.jpg" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Cat Category">
+              <div class="card-img-overlay d-flex align-items-center justify-content-center">
+                <h5 class="card-title text-white">Cat Outfits</h5>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <div class="card rounded-3 text-center">
+            <%= link_to filtered_outfits_path(category: 'Miscellaneous'), class: 'text-decoration-none' do %>
+              <img src="/assets/rat.jpg" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Miscellaneous Category">
+              <div class="card-img-overlay d-flex align-items-center justify-content-center">
+                <h5 class="card-title text-white">Miscellaneous</h5>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
