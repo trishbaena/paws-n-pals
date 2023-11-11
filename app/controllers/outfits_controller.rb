@@ -4,7 +4,12 @@ class OutfitsController < ApplicationController
   before_action :check_user, only: [:edit, :update, :destroy]
 
   def index
-    @outfits = Outfit.all
+    if params[:category]
+      @category = Category.find_by(name: params[:category])
+      @outfits = @category ? @category.outfits : Outfit.none
+    else
+      @outfits = Outfit.all
+    end
   end
 
   def show
@@ -48,7 +53,7 @@ class OutfitsController < ApplicationController
   private
 
   def outfit_params
-    params.require(:outfit).permit(:name, :description, :photo_url, :price)
+    params.require(:outfit).permit(:name, :description, :photo, :price, :category_id)
   end
 
   def check_user

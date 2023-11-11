@@ -17,7 +17,9 @@
       <% @outfits.each do |outfit| %>
         <div class="col-6 col-lg-4">
           <div class="card">
-            <img src="<%= outfit.photo_url %>" class="card-img-top" style="height: 300px; object-fit: cover; object-position: center top;" alt="<%= outfit.name %>">
+          <% if outfit.photo.attached? %>
+            <%= cl_image_tag outfit.photo.key, width: 400, height: 300, crop: :fill %>
+          <% end %>
             <div class="card-body">
               <h5 class="card-title"><strong><%= outfit.name %></strong></h5>
               <p class="card-text">Price: <%= outfit.price %></p>
