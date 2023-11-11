@@ -26,8 +26,7 @@
             <%= link_to "Lease an outfit!", new_outfit_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= image_tag "https://img.freepik.com/free-vector/cute-cool-cat-wearing-glasses-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated_138676-4268.jpg?w=1380&t=st=1699721451~exp=1699722051~hmac=04f3220a3d6fbfb234d0284520af505712d79b1fe0ebe86913132d3c62e477f8", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
               <%= link_to "Logout", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>

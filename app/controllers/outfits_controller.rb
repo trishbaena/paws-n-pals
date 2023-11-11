@@ -9,6 +9,7 @@ class OutfitsController < ApplicationController
       @outfits = @category ? @category.outfits : Outfit.none
     else
       @outfits = Outfit.all
+      @categories = Category.all
     end
   end
 
@@ -35,7 +36,7 @@ class OutfitsController < ApplicationController
     @outfit = Outfit.find(params[:id])
   end
 
-    def update
+  def update
     @outfit = Outfit.find(params[:id])
     if @outfit.update(outfit_params)
       redirect_to outfit_path(@outfit)
