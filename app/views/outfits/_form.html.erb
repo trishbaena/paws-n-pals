@@ -3,5 +3,5 @@
   <%= f.input :description %>
   <%= f.input :photo_url %>
   <%= f.input :price %>
-  <%= f.submit "Create outfit" %>
+  <%= f.submit @outfit.new_record? ? "Create Outfit" : "Update Outfit" %>
 <% end %>
