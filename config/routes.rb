@@ -16,5 +16,8 @@ Rails.application.routes.draw do
     resources :requests, only: [ :new, :create, :edit, :update, :destroy ]
   end
 
+  get 'outfits', to: 'outfits#index', as: :filtered_outfits
+
   resources :requests, only: [ :edit, :update ]
+
 end

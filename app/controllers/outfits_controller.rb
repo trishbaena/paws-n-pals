@@ -3,10 +3,11 @@ class OutfitsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @outfits = Outfit.all
-    if params[:query].present?
-      sql_subquery = "name ILIKE :query OR description ILIKE :query"
-      @outfits = @outfits.where(sql_subquery, query: "%#{params[:query]}%")
+    if params[:category]
+      @category = Category.find_by(name: params[:category])
+      @outfits = @category ? @category.outfits : Outfit.none
+    else
+      @outfits = Outfit.all
     end
   end
 
@@ -38,6 +39,6 @@ class OutfitsController < ApplicationController
   private
 
   def outfit_params
-    params.require(:outfit).permit(:name, :description, :photo, :price)
+    params.require(:outfit).permit(:name, :description, :photo, :price, :category_id)
   end
 end

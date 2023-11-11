@@ -1,10 +1,30 @@
 <div class="row justify-content-center" style="margin-left: 0px;margin-right: 0px;">
-  <div class="col-8">
+  <div class="col-10">
     <div class="rounded-4 banner">
       <div class="banner-text">
         <h1>Cute matching outfits for your and your pet</h1>
         <p>Twinning w/ with your BFFL never felt better</p>
-        <%= link_to "Browse Outfits", outfits_path(@outfit), :class => "btn btn-light rounded-3" %></a>
+        <%= link_to "Browse All Outfits", outfits_path(@outfit), :class => "btn btn-light rounded-3 mt-3" %></a>
+      </div>
+    </div>
+    <div class="container my-4">
+      <div class="row">
+        <% Category.all.each do |category| %>
+          <% outfit = Outfit.where(category: category).first %>
+          <div class="col-md-4 mb-3">
+            <div class="card text-white text-center">
+              <% if outfit.present? %>
+                <div class="card-img-top bg-cover" style="background-image: url('<%= outfit.photo_url %>'); height: 200px; background-size: cover; background-position: center;">
+                  <%= link_to category.name, filtered_outfits_path(category: category.name), class: 'stretched-link text-decoration-none text-white', style: 'position: relative; top: 50%; transform: translateY(-50%);' %>
+                </div>
+              <% else %>
+                <div class="card-img-top bg-secondary" style="height: 200px;">
+                  <%= link_to category.name, filtered_outfits_path(category: category.name), class: 'stretched-link text-decoration-none text-white', style: 'position: relative; top: 50%; transform: translateY(-50%);' %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

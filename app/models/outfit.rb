@@ -1,5 +1,6 @@
 class Outfit < ApplicationRecord
   belongs_to :user
+  belongs_to :category
   has_many :requests, dependent: :destroy
 
   has_one_attached :photo
