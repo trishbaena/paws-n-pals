@@ -15,18 +15,6 @@
         %>
         <%= submit_tag "🔎", name: "", class: "btn btn-secondary" %>
       <% end %>
-
-      <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 mt-2 align-middle">
-      <i class="fs-4 bi-speedometer2"></i> <h4 class="ms-1 d-none d-sm-inline">Categories</h4></a>
-        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-
-          <% @categories.each do |category| %>
-            <li class="w-100">
-            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"> > <%= category.name %> </a>
-          </li>
-          <% end %>
-
-        </ul>
     </div>
 
     <div class="col-9 d-flex flex-wrap">

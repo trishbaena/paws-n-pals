@@ -4,12 +4,13 @@ class OutfitsController < ApplicationController
   before_action :check_user, only: [:edit, :update, :destroy]
 
   def index
-    if params[:category]
+    @outfits = Outfit.all
+    if params[:query].present?
+      sql_subquery = "name ILIKE :query OR description ILIKE :query OR category ILIKE :query"
+      @outfits = @outfits.where(sql_subquery, query: "%#{params[:query]}%")
+    elsif params[:category]
       @category = Category.find_by(name: params[:category])
       @outfits = @category ? @category.outfits : Outfit.none
-    else
-      @outfits = Outfit.all
-      @categories = Category.all
     end
   end
 
