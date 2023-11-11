@@ -10,36 +10,28 @@
 
     <div class="container my-4">
       <div class="row">
+
         <div class="col-md-4 mb-3">
-          <div class="card rounded-3 text-center">
-            <%= link_to filtered_outfits_path(category: 'Dog'), class: 'text-decoration-none' do %>
-              <img src="<%= asset_url('dog-bee.jpg') %>" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Dog Category">
-              <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                <h5 class="card-title text-white">Dog Outfits</h5>
-              </div>
-            <% end %>
+          <div class="rounded-4 category-banner-dog">
+            <div class="category-banner-text">
+              <h3><%= link_to "Dog outfits", filtered_outfits_path(category: 'Dog'), class: 'font-weight-bold text-decoration-none text-white' %></h3>
+            </div>
           </div>
         </div>
 
         <div class="col-md-4 mb-3">
-          <div class="card rounded-3 text-center">
-            <%= link_to filtered_outfits_path(category: 'Cat'), class: 'text-decoration-none' do %>
-              <img src="<%= asset_url('cat-bee.jpg') %>" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Cat Category">
-              <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                <h5 class="card-title text-white">Cat Outfits</h5>
-              </div>
-            <% end %>
+          <div class="rounded-4 category-banner-cat">
+            <div class="category-banner-text">
+              <h3><%= link_to "Cat outfits", filtered_outfits_path(category: 'Dog'), class: 'font-weight-bold text-decoration-none text-white' %></h3>
+            </div>
           </div>
         </div>
 
         <div class="col-md-4 mb-3">
-          <div class="card rounded-3 text-center">
-            <%= link_to filtered_outfits_path(category: 'Miscellaneous'), class: 'text-decoration-none' do %>
-              <img src="<%= asset_url('rat.jpg') %>" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Miscellaneous Category">
-              <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                <h5 class="card-title text-white">Miscellaneous</h5>
-              </div>
-            <% end %>
+          <div class="rounded-4 category-banner-misc">
+            <div class="category-banner-text">
+              <h3><%= link_to "Miscellaneous", filtered_outfits_path(category: 'Dog'), class: 'font-weight-bold text-decoration-none text-white' %></h3>
+            </div>
           </div>
         </div>
 

@@ -67,3 +67,35 @@ body {
   object-position: center top;
   height: 200px;
 }
+
+.category-banner-dog{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 200px;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://i.postimg.cc/CKy4JfyW/dog-bee.jpg');
+}
+
+.category-banner-cat{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 200px;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://i.postimg.cc/zfnFQX83/cat-bee.jpg');
+}
+
+.category-banner-misc{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 200px;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://i.postimg.cc/vZxzWtKr/rat.jpg');
+}
+
+.category-banner-text h3{
+  text-decoration: none;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-align: center;
+  line-height: 200px;
+}
