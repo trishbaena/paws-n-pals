@@ -6,7 +6,7 @@ class OutfitsController < ApplicationController
   def index
     @outfits = Outfit.all
     if params[:query].present?
-      sql_subquery = "name ILIKE :query OR description ILIKE :query OR category ILIKE :query"
+      sql_subquery = "name ILIKE :query OR description ILIKE :query"
       @outfits = @outfits.where(sql_subquery, query: "%#{params[:query]}%")
     elsif params[:category]
       @category = Category.find_by(name: params[:category])
