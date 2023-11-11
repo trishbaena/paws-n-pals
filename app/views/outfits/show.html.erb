@@ -13,6 +13,7 @@
       <div>
         <%= link_to "Request this outfit!",  new_outfit_request_path(@outfit), :class => "btn btn-primary" %>
         <%= link_to "Go Back to Browse", outfits_path, :class => "btn btn-secondary" %>
+        <%= link_to 'Edit', edit_outfit_path(@outfit), class: 'btn btn-primary' if @outfit.user == current_user %>
       </div>
     </div>
   </div>

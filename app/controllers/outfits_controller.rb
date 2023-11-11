@@ -1,6 +1,7 @@
 class OutfitsController < ApplicationController
   before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :check_user, only: [:edit, :update, :destroy]
 
   def index
     if params[:category]
@@ -30,6 +31,19 @@ class OutfitsController < ApplicationController
     end
   end
 
+  def edit
+    @outfit = Outfit.find(params[:id])
+  end
+
+    def update
+    @outfit = Outfit.find(params[:id])
+    if @outfit.update(outfit_params)
+      redirect_to outfit_path(@outfit)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @outfit = Outfit.find(params[:id])
     @outfit.destroy
@@ -40,5 +54,12 @@ class OutfitsController < ApplicationController
 
   def outfit_params
     params.require(:outfit).permit(:name, :description, :photo, :price, :category_id)
+  end
+
+  def check_user
+    @outfit = Outfit.find(params[:id])
+    unless @user == @current_user
+      redirect_to root_path
+    end
   end
 end

@@ -9,5 +9,5 @@
     <%= f.collection_select :category_id, Category.all, :id, :name %>
   </div>
 
-  <%= f.submit "Create outfit" %>
+  <%= f.submit @outfit.new_record? ? "Create Outfit" : "Update Outfit" %>
 <% end %>
